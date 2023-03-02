@@ -7,6 +7,7 @@ import iconPaginationPrev from '../assets/images/icons/pagination-prev.svg';
 import TableBlock from '../components/TableBlock';
 import EditFormBlock from '../components/EditFormBlock';
 import { Context } from '../App';
+import InputJSON from '../components/InputJSON';
 
 // export type ItemType = {
 //   name: string;
@@ -89,14 +90,8 @@ const MainLayout = () => {
         </div>
         <div className="wrapper__forms">
           <div className="wrapper__forms-inner">
-            <EditFormBlock items={items} setItems={setItems} />
-            <form className="form-add" action="#">
-              <textarea className="form-add__textarea" rows={6}></textarea>
-              <div className="form-add__box">
-                <button className="form-add__download">Загрузить</button>
-                <button className="form-add__send">Отправить</button>
-              </div>
-            </form>
+            <EditFormBlock />
+            <InputJSON />
           </div>
         </div>
       </div>

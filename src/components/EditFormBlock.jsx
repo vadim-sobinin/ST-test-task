@@ -22,7 +22,9 @@ const EditFormBlock = () => {
     setItems([...items, { name, value, order: items.length }]);
   };
 
-  const onClickAddOrEdit = () => {
+  const onClickAddOrEdit = (e) => {
+    e.preventDefault();
+
     if (!inputName) {
       return;
     }
@@ -66,6 +68,7 @@ const EditFormBlock = () => {
           Name
         </label>
         <input
+          required
           className="form__input"
           type="text"
           id="form-name"
@@ -79,6 +82,7 @@ const EditFormBlock = () => {
           Value
         </label>
         <input
+          required
           className="form__input"
           type="text"
           id="form-value"
@@ -90,8 +94,8 @@ const EditFormBlock = () => {
       <div className="form__box">
         <button
           className={editingMode ? 'form__button editing' : 'form__button'}
-          type="button"
-          onClick={() => onClickAddOrEdit()}>
+          type="submit"
+          onClick={(e) => onClickAddOrEdit(e)}>
           {editingMode ? 'Изменить элемент' : 'Добавить элемент'}
         </button>
       </div>
