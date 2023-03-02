@@ -72,6 +72,9 @@
     &:hover {
       background-color: #0b36a3;
     }
+    &.editing {
+      background-color: rgba(#f19726, 1);
+    }
   }
 }
 
@@ -288,6 +291,13 @@
     border-radius: 4px;
     background-color: #dc3545;
     cursor: pointer;
+    &.disabled {
+      background-color: #8a8b8d;
+      cursor: not-allowed;
+    }
+  }
+  &__editing-elem {
+    background-color: rgba(#f19726, 0.5);
   }
   &__down,
   &__top {
@@ -295,6 +305,10 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
   &__down {
     margin: 0 8px;
