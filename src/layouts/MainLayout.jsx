@@ -16,8 +16,6 @@ import InputJSON from '../components/InputJSON';
 // };
 
 const MainLayout = () => {
-  const { items, setItems } = React.useContext(Context);
-
   return (
     <div className="wrapper">
       <div className="wrapper__inner">
