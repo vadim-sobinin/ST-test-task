@@ -19,7 +19,9 @@ const TableBlock = () => {
       return items;
     }
     return items.filter(
-      (item) => item.name.includes(searchValue) || item.value.includes(searchValue),
+      (item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.value.toLowerCase().includes(searchValue.toLowerCase()),
     );
   };
 
