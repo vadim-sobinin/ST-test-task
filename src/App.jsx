@@ -12,6 +12,9 @@ const App = () => {
   const [inputName, setInputName] = React.useState('');
   const [inputValue, setInputValue] = React.useState('');
 
+  const [inputSearch, setInputSearch] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState('');
+
   React.useEffect(() => {
     localStorage.getItem('data') && setItems(JSON.parse(localStorage.getItem('data')));
   }, []);
@@ -35,6 +38,10 @@ const App = () => {
         setInputName,
         inputValue,
         setInputValue,
+        inputSearch,
+        setInputSearch,
+        searchValue,
+        setSearchValue,
       }}>
       <MainLayout />;
     </Context.Provider>

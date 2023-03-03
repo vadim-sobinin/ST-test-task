@@ -5,6 +5,7 @@ import iconPaginationNext from '../assets/images/icons/pagination-next.svg';
 import iconPaginationPrev from '../assets/images/icons/pagination-prev.svg';
 
 import TableBlock from '../components/TableBlock';
+import Search from '../components/Search';
 import EditFormBlock from '../components/EditFormBlock';
 import { Context } from '../App';
 import InputJSON from '../components/InputJSON';
@@ -24,12 +25,7 @@ const MainLayout = () => {
           <div className="section-table">
             <div className="section-table__header">
               <div className="section-table__header-top">
-                <div className="section-table__search">
-                  <div className="section-table__search-icon">
-                    <img width="16" height="16" src={iconSearch} alt={'search icon'} />
-                  </div>
-                  <input className="section-table__search-input" type="text" />
-                </div>
+                <Search />
                 <div className="section-table__sorting">
                   <span>Выподить по:</span>
                   <select>

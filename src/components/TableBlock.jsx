@@ -1,6 +1,7 @@
 import React from 'react';
 import key from 'weak-key';
 import { Context } from '../App';
+import NotFound from './NotFound';
 // import { ItemType } from '../layouts/MainLayout';
 
 import TableItem from './TableItem';
@@ -11,7 +12,17 @@ import TableItem from './TableItem';
 // };
 
 const TableBlock = () => {
-  const { items } = React.useContext(Context);
+  const { items, searchValue } = React.useContext(Context);
+
+  const checkSearch = () => {
+    if (!searchValue) {
+      return items;
+    }
+    return items.filter(
+      (item) => item.name.includes(searchValue) || item.value.includes(searchValue),
+    );
+  };
+
   return (
     <table className="table" width="100%" cellSpacing={0}>
       <thead className="thead">
@@ -27,10 +38,12 @@ const TableBlock = () => {
           </th>
         </tr>
       </thead>
-      <tbody>
-        {items.map((obj) => (
-          <TableItem key={key(obj)} obj={obj} />
-        ))}
+      <tbody className={checkSearch().length !== 0 ? '' : 'table__not-found'}>
+        {checkSearch().length !== 0 ? (
+          checkSearch().map((obj) => <TableItem key={key(obj)} obj={obj} />)
+        ) : (
+          <NotFound />
+        )}
       </tbody>
     </table>
   );
