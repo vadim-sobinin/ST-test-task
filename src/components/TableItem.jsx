@@ -31,6 +31,9 @@ const TableItem = ({ obj }) => {
           return item;
         }),
     );
+    if ((items.length = 1)) {
+      localStorage.setItem('data', '');
+    }
   };
 
   const onClickEdit = () => {
