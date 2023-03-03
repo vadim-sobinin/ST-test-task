@@ -38,12 +38,10 @@ const TableBlock = () => {
           </th>
         </tr>
       </thead>
-      <tbody className={checkSearch().length !== 0 && !searchValue ? '' : 'table__not-found'}>
-        {checkSearch().length !== 0 && !searchValue ? (
-          checkSearch().map((obj) => <TableItem key={key(obj)} obj={obj} />)
-        ) : (
-          <NotFound />
-        )}
+      <tbody>
+        {checkSearch().map((obj) => (
+          <TableItem key={key(obj)} obj={obj} />
+        ))}
       </tbody>
     </table>
   );
