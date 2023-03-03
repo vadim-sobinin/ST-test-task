@@ -12,18 +12,10 @@ import TableItem from './TableItem';
 // };
 
 const TableBlock = () => {
-  const { items, searchValue } = React.useContext(Context);
+  const { items, searchValue, currentPage, itemsPerPage, checkSearch } = React.useContext(Context);
 
-  const checkSearch = () => {
-    if (!searchValue) {
-      return items;
-    }
-    return items.filter(
-      (item) =>
-        item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.value.toLowerCase().includes(searchValue.toLowerCase()),
-    );
-  };
+  const lastItemIndex = currentPage * itemsPerPage;
+  const firstItemIndex = lastItemIndex - itemsPerPage;
 
   return (
     <table className="table" width="100%" cellSpacing={0}>
@@ -41,10 +33,12 @@ const TableBlock = () => {
         </tr>
       </thead>
       <tbody>
-        {checkSearch().length === 0 && searchValue ? (
+        {checkSearch(items).length === 0 && searchValue ? (
           <NotFound />
         ) : (
-          checkSearch().map((obj) => <TableItem key={key(obj)} obj={obj} />)
+          checkSearch(items)
+            .slice(firstItemIndex, lastItemIndex)
+            .map((obj) => <TableItem key={key(obj)} obj={obj} />)
         )}
       </tbody>
     </table>

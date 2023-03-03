@@ -13,6 +13,10 @@ const EditFormBlock = () => {
     setInputName,
     inputValue,
     setInputValue,
+    setCurrentPage,
+    totalPages,
+    setInputSearch,
+    setSearchValue,
   } = React.useContext(Context);
 
   const nameInputRef = React.useRef();
@@ -36,6 +40,11 @@ const EditFormBlock = () => {
       addNewItem(inputName, inputValue);
       setInputName('');
       setInputValue('');
+      setInputSearch('');
+      setSearchValue('');
+      setTimeout(() => {
+        setCurrentPage(totalPages);
+      }, 100);
     }
     if (editingMode) {
       setItems(
